@@ -70,7 +70,7 @@ export function MarketingLanding(): ReactElement {
           Get it on the App Store
         </h2>
         <p className="mt-2 text-center text-sm text-neutral-500 dark:text-neutral-400">
-          Badge and store link ship with the public TestFlight / App Store release.
+          Public TestFlight and App Store links ship with the release; check back soon.
         </p>
       </section>
 

@@ -1,11 +1,13 @@
-/** Public marketing / App Store support contact (override at build time). */
-export const marketingSupportEmail: string =
-  process.env.NEXT_PUBLIC_SUPPORT_EMAIL ?? "support@aoat.app";
+/** Public site origin (this marketing deploy + canonical URLs for metadata / SEO). */
+export const marketingSiteOrigin: string = "https://app.agreeonatime.com";
+
+/** Where the product web app (sign-in) lives — same host as marketing for now. */
+export const webAppOrigin: string = "https://app.agreeonatime.com";
+
+/** Public marketing / App Store support contact. */
+export const marketingSupportEmail: string = "support@aoat.app";
 
 /** Web app entry (sign-in) for CTAs from the marketing site. */
 export function getWebAppSignInUrl(): string {
-  const base: string = (
-    process.env.NEXT_PUBLIC_WEB_APP_URL ?? "https://aoat.app"
-  ).replace(/\/$/, "");
-  return `${base}/sign-in`;
+  return `${webAppOrigin}/sign-in`;
 }

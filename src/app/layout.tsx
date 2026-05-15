@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 
 import { MarketingHeader } from "@/components/marketing/marketing-header";
+import { marketingSiteOrigin } from "@/lib/marketing/constants";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -14,24 +15,33 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-export const metadata: Metadata = {
-  metadataBase: new URL("https://agreeonatime.com"),
-  title: {
-    default: "Agree on a Time",
-    template: "%s · Agree on a Time",
-  },
-  description:
-    "Propose times, vote as a group, and lock the winner — scheduling without the endless thread.",
-  openGraph: {
-    title: "Agree on a Time",
-    description:
-      "Propose times, vote as a group, and lock the winner — scheduling without the endless thread.",
-    url: "https://agreeonatime.com",
-    siteName: "Agree on a Time",
-    locale: "en_US",
-    type: "website",
-  },
-};
+const siteDescription: string =
+  "Propose times, vote as a group, and lock the winner — scheduling without the endless thread.";
+
+export function generateMetadata(): Metadata {
+  const siteUrl: string = marketingSiteOrigin;
+  return {
+    metadataBase: new URL(siteUrl),
+    title: {
+      default: "Agree on a Time",
+      template: "%s · Agree on a Time",
+    },
+    description: siteDescription,
+    openGraph: {
+      title: "Agree on a Time",
+      description: siteDescription,
+      url: siteUrl,
+      siteName: "Agree on a Time",
+      locale: "en_US",
+      type: "website",
+    },
+    twitter: {
+      card: "summary",
+      title: "Agree on a Time",
+      description: siteDescription,
+    },
+  };
+}
 
 export default function RootLayout({
   children,
